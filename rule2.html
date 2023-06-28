@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rule2 Calculator</title>
+    <link href="logo/Rupee.png" rel="icon">
+    <script src="rule2.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 10px;
+        }
+        
+        input[type="number"],
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            display: block;
+            margin: 0 auto;
+        }
+        
+        button:hover {
+            background-color: #45a049;
+        }
+
+        aside {
+            background-color: #f0f0f0;
+            padding: 10px;
+            border-radius: 4px;
+            margin-top: 20px;
+        }
+
+        aside p {
+            margin: 0;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>50:30:20 Rule Calculator</h1>
+
+        <div class="form-group">
+            <label for="monthly-salary">Enter your Monthly Salary: ₹</label>
+            <input type="number" id="monthly-salary" />
+        </div>
+
+        <div class="form-group">
+            <button onclick="calculateRule()">Click here to calculate</button>
+        </div>
+
+        <div class="form-group">
+            <label for="wants">Your monthly expenditure on Wants: ₹</label>
+            <input type="text" id="wants" disabled />
+        </div>
+
+        <div class="form-group">
+            <label for="needs">Your monthly expenditure on Needs: ₹</label>
+            <input type="text" id="needs" disabled />
+        </div>
+
+        <div class="form-group">
+            <label for="invest">Monthly you should Invest: ₹</label>
+            <input type="text" id="invest" disabled />
+        </div>
+        
+            <aside>
+                <p>
+                    <strong>NOTE:</strong><br>
+                    Monthly salary’s 50% = needs (rent, groceries, utililty bills, travelling) <br>
+                    Monthly salary’s 30% = wants (buying electronics gadgets, clothes, shoes, parties, good vacations) <br>
+                    Monthly salary’s 20% = Invest
+                </p>
+            </aside>
+    </div>
+
+    <script>
+        function calculateRule() {
+            var salaryInput = document.getElementById("monthly-salary");
+            var wantsInput = document.getElementById("wants");
+            var needsInput = document.getElementById("needs");
+            var investInput = document.getElementById("invest");
+
+            var salary = parseFloat(salaryInput.value);
+            var wants = Math.floor(salary * 0.5);
+            var needs = Math.floor(salary * 0.3);
+            var invest = Math.floor(salary * 0.2);
+
+            wantsInput.value = wants;
+            needsInput.value = needs;
+            investInput.value = invest;
+        }
+    </script>
+
+</body>
+</html>

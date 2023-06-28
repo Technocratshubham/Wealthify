@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="logo/Rupee.png" rel="icon">
+    <title>Rule 7</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #fff;
+            border-radius: 5px;
+            padding: 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        .box {
+            border: 2px solid #ccc;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+        }
+
+        .box-title {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #4caf50;
+            color: #fff;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        input[disabled] {
+            background-color: #f2f2f2;
+            color: #888;
+        }
+
+        aside {
+            background-color: #f0f0f0;
+            padding: 10px;
+            border-radius: 4px;
+            margin-top: 20px;
+        }
+
+        aside p {
+            margin: 0;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Optimum Car/Bike Budget</h1>
+        <div class="box">
+            <div class="box-title">If you want to buy a car without a loan</div>
+            <label for="monthly-salary">Enter your Monthly salary:</label>
+            <input type="text" id="monthly-salary">
+            <br/>
+            <br/>
+            <button onclick="calculateWithoutLoan()">Click here to calculate</button>
+            <br/>
+            <br/>
+            <label for="max-budget">Maximum budget to buy a car:</label>
+            <input type="text" id="max-budget" disabled>
+        </div>
+        <div class="box">
+            <div class="box-title">If you want to buy a car via a loan</div>
+            <label for="car-amount">Enter the amount of car you want to buy:</label>
+            <input type="text" id="car-amount">
+            <br/>
+            <br/>
+            <button onclick="calculateWithLoan()">Click here to calculate</button>
+            <br/>
+            <br/>
+            <label for="downpayment">Ideally you should pay a downpayment of:</label>
+            <input type="text" id="downpayment" disabled>
+            <br/>
+            <br/>
+            <label for="max-emi">Maximum monthly EMI you should pay:</label>
+            <input type="text" id="max-emi" disabled>
+        </div>
+
+        <aside>
+            <p>
+                <strong>NOTE:</strong><br>
+                Q: How big car you can buy ? <br>
+                A: 6 months of your montly salary == maximum budget to buy a car<br>
+                <br>
+                Q: If you want to buy a car on loan?<br>
+                Thumb rule is → 20/4/10 rule
+                <br>
+                20% → down payment i.e. 80% → loan<br>
+                4 → years of loan period is advisable<br>
+                10% → EMI should be NOT more than 10% of monthly salary.
+            </p>
+        </aside>
+
+    </div>
+
+    <script>
+        function calculateWithoutLoan() {
+            let monthlySalary = parseInt(document.getElementById("monthly-salary").value);
+            let maxBudget = 6 * monthlySalary;
+            document.getElementById("max-budget").value = maxBudget;
+        }
+
+        function calculateWithLoan() {
+            let carAmount = parseInt(document.getElementById("car-amount").value);
+            let downPayment = Math.floor(0.2 * carAmount);
+            let maxEmi = Math.floor(0.1 * carAmount);
+
+            document.getElementById("downpayment").value = downPayment;
+            document.getElementById("max-emi").value = maxEmi;
+        }
+    </script>
+</body>
+</html>

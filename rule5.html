@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rule 5 Calculator</title>
+    <link href="logo/Rupee.png" rel="icon">
+    <script src="rule5.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        input[type="number"],
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            display: block;
+            margin: 0 auto;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        aside {
+            background-color: #f0f0f0;
+            padding: 10px;
+            border-radius: 4px;
+            margin-top: 20px;
+        }
+
+        aside p {
+            margin: 0;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Rule 5 Calculator</h1>
+
+        <div class="form-group">
+            <label for="monthly-salary">Enter your Monthly Salary: ₹</label>
+            <input type="number" id="monthly-salary" />
+        </div>
+
+        <div class="form-group">
+            <label for="current-age">Enter Your current age:</label>
+            <input type="number" id="current-age" />
+        </div>
+
+        <div class="form-group">
+            <button onclick="calculateRule()">Click here to calculate</button>
+        </div>
+
+        <div class="form-group">
+            <label for="equity-investment">You can have Equity Investment like (Mutual Funds and Stock Market): ₹</label>
+            <input type="text" id="equity-investment" disabled />
+        </div>
+
+        <div class="form-group">
+            <label for="gold-investment">Your recommended GOLD investment should be: ₹</label>
+            <input type="text" id="gold-investment" disabled />
+        </div>
+
+        <div class="form-group">
+            <label for="other-investment">Amount to be invested in other Investing Instruments like debt instruments: ₹</label>
+            <input type="text" id="other-investment" disabled />
+        </div>
+
+        <aside>
+            <p>
+                <strong>NOTE:</strong><br>
+                100 - Age can be your Equity investment (Mutual Funds and Stock Market).<br>
+                For example, if your age is 25, then 100 - 25 = 75. That means 75% of (20% of your Monthly Salary) can be
+                invested in Equity.<br>
+                The remaining 25% can be invested in Gold (5%) and (20%) in Bonds or debt instruments.
+            </p>
+        </aside>
+    </div>
+
+    <script>
+        function calculateRule() {
+            var salaryInput = document.getElementById("monthly-salary");
+            var ageInput = document.getElementById("current-age");
+            var equityInput = document.getElementById("equity-investment");
+            var goldInput = document.getElementById("gold-investment");
+            var otherInput = document.getElementById("other-investment");
+
+            var salary = parseFloat(salaryInput.value);
+            var age = parseInt(ageInput.value);
+
+            var Invest = salary * 0.2;
+            var equity = 100 - age;
+            var ie = Invest * equity / 100;
+            var gold = Invest * 0.05;
+            var others = Invest * 0.2;
+
+            equityInput.value = ie.toFixed(2);
+            goldInput.value = gold.toFixed(2);
+            otherInput.value = others.toFixed(2);
+        }
+    </script>
+</body>
+
+</html>

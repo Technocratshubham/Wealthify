@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rule1 Calculator</title>
+    <script src="rule1.js"></script>
+    <link href="logo/Rupee.png" rel="icon">
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    padding: 20px;
+  }
+  
+  .container {
+    max-width: 400px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  h1 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 10px;
+  }
+  
+  input[type="number"],
+  input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  
+  button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    display: block;
+    margin: 0 auto;
+  }
+  
+  button:hover {
+    background-color: #45a049;
+  }
+
+  aside {
+    background-color: #f0f0f0;
+    padding: 10px;
+    border-radius: 4px;
+    margin-top: 20px;
+  }
+
+  aside p {
+    margin: 0;
+  }
+  
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Emergency Fund Calculator</h2>
+
+        <div class="form-group">
+            <label for="monthly-salary">Enter your Monthly Salary: ₹</label>
+            <input type="number" id="monthly-salary" />
+        </div>
+
+        <div class="form-group">
+            <button onclick="calculateEmergencyFund()">Click here to calculate</button>
+        </div>
+
+        <div class="form-group">
+            <label for="emergency-fund">Your Emergency Fund must be: ₹</label>
+            <input type="text" id="emergency-fund" disabled />
+        </div>
+
+        <aside>
+          <p>
+              <strong>NOTE:</strong><br> <br>
+              The recommended practice is to maintain an emergency fund equivalent to six months' worth of salary. <br> <br>
+              This fund should be readily accessible and easily convertible to cash. <br> <br>
+              To ensure its liquidity, it is advisable to keep the emergency fund in financial instruments such as a bank account, fixed deposit (FD), or liquid mutual funds, which can be quickly converted into cash when needed.
+          </p>
+      </aside>
+    </div>
+
+
+    <script>
+        function calculateEmergencyFund() {
+            var salaryInput = document.getElementById("monthly-salary");
+            var emergencyFundInput = document.getElementById("emergency-fund");
+
+            var salary = parseFloat(salaryInput.value);
+            var emergencyFund = salary * 6;
+
+            emergencyFundInput.value = emergencyFund;
+        }
+    </script>
+</body>
+</html>

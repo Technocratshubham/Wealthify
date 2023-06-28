@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rule3 Calculator</title>
+    <link href="logo/Rupee.png" rel="icon">
+    <script src="rule3.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        input[type="number"],
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            display: block;
+            margin: 0 auto;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        aside {
+            background-color: #f0f0f0;
+            padding: 10px;
+            border-radius: 4px;
+            margin-top: 20px;
+        }
+
+        aside p {
+            margin: 0;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Life and Health Insurance Calculator</h1>
+
+        <div class="form-group">
+            <label for="annual-income">Enter your Annual Salary: ₹</label>
+            <input type="number" id="annual-income" />
+        </div>
+
+        <div class="form-group">
+            <button onclick="calculateRule()">Click here to calculate</button>
+        </div>
+
+        <div class="form-group">
+            <label for="term-insurance">Your Term Insurance Cover could be: ₹</label>
+            <input type="text" id="term-insurance" disabled />
+        </div>
+
+        <div class="form-group">
+            <label for="health-insurance">Your Health Insurance Cover could be: ₹</label>
+            <input type="text" id="health-insurance" value="5-8 lakhs" disabled />
+        </div>
+        <aside>
+            <p>
+                <strong>NOTE:</strong><br>
+                    Before Planning any other Investment, Life Insurance and Health Insurance should be planned first.
+                    <br>
+                    <b>Life Insurance</b> → Term Insurance <br>
+                    Term Insurance cover ⇒ 20 * Annual Income <br> 
+                    <b>Health Insurance</b> → Company + Get a Top Up cover <br>
+                    Health Insurance cover ⇒ Cost of Heart Surgery in your city (around 5 - 8 lakhs)
+            </p>
+        </aside>
+    </div>
+
+
+    <script>
+        function calculateRule() {
+            var incomeInput = document.getElementById("annual-income");
+            var termInsuranceInput = document.getElementById("term-insurance");
+            var healthInsuranceInput = document.getElementById("health-insurance");
+
+            var income = parseFloat(incomeInput.value);
+            var termInsurance = 20 * income;
+            var healthInsurance = "5-8 lakhs";
+
+            termInsuranceInput.value = termInsurance;
+            healthInsuranceInput.value = healthInsurance;
+        }
+    </script>
+</body>
+
+</html>

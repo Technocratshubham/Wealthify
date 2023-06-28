@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rule4 Calculator</title>
+    <script src="rule4.js"></script>
+    <link href="logo/Rupee.png" rel="icon">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            display: block;
+            margin: 0 auto;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        #rental-yield {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        #outcome {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        aside {
+            background-color: #f0f0f0;
+            padding: 10px;
+            border-radius: 4px;
+            margin-top: 20px;
+        }
+
+        aside p {
+            margin: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Rent or Buy decision</h1>
+
+        <div class="form-group">
+            <label for="monthly-rent">Enter monthly rent of the property: ₹</label>
+            <input type="number" id="monthly-rent" />
+        </div>
+
+        <div class="form-group">
+            <label for="property-value">Enter property value: ₹</label>
+            <input type="number" id="property-value" />
+        </div>
+
+        <div class="form-group">
+            <button onclick="calculateRentalYield()">Click here to Decide</button>
+        </div>
+
+        <div class="form-group">
+            <label for="rental-yield">Your rental yield is: </label>
+            <input type="text" id="rental-yield" disabled />
+        </div>
+
+        <div class="form-group">
+            <label for="outcome">Outcome:</label>
+            <input type="text" id="outcome" disabled />
+        </div>
+
+        <aside>
+            <p>
+                <strong>NOTE:</strong><br>
+                The rental yield measures the profitability of an investment property based on its rental income compared to its value. <br>
+                Rental Yeild ⇒ Annual Rent / Property Value <br>
+                If the rental yield of a property is above 4%, then it is suggested to the property, otherwise it recommended to rent it. 
+            </p>
+        </aside>
+
+    </div>
+
+    <script>
+        function calculateRentalYield() {
+            var rentInput = document.getElementById("monthly-rent");
+            var valueInput = document.getElementById("property-value");
+            var yieldInput = document.getElementById("rental-yield");
+            var outcomeInput = document.getElementById("outcome");
+
+            var monthlyRent = parseFloat(rentInput.value);
+            var propertyValue = parseFloat(valueInput.value);
+
+            var annualRent = 12 * monthlyRent;
+            var rentalYield = (annualRent * 100.0) / propertyValue;
+
+            yieldInput.value = rentalYield.toFixed(2) + "%";
+
+            if (rentalYield >= 4.0) {
+                outcomeInput.value = "The rent is good for that property → BUY it!!";
+            } else {
+                outcomeInput.value = "Rent yield is NOT that good. Better choice → RENT it!!";
+            }
+        }
+    </script>
+</body>
+
+</html>
